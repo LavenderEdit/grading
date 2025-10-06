@@ -6,10 +6,14 @@ import com.grade.manage.dto.simple.ScoreDTO;
 import com.grade.manage.dto.summary.ScoreHistorySummary;
 import com.grade.manage.dto.update.ScoreUpdateDTO;
 import com.grade.manage.model.ScoreHistory;
+import java.util.Collection;
 import java.util.List;
+import org.mapstruct.BeanMapping;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+import org.mapstruct.MappingTarget;
 import org.mapstruct.Mappings;
+import org.mapstruct.NullValuePropertyMappingStrategy;
 
 /**
  *
@@ -18,20 +22,20 @@ import org.mapstruct.Mappings;
 @Mapper(componentModel = "spring")
 public interface ScoreMapper {
 
-    @Mapping(source = "user.id", target = "user_id")
+    @Mapping(source = "user.id", target = "userId")
     ScoreDTO toDTO(ScoreHistory sh);
 
-    List<ScoreDTO> toDTOList(List<ScoreHistory> shs);
+    List<ScoreDTO> toDTOList(Collection<ScoreHistory> shs);
 
-    @Mapping(source = "user.id", target = "user_id")
+    @Mapping(source = "user.id", target = "userId")
     ScoreDetailDTO toDetailDTO(ScoreHistory sh);
 
-    List<ScoreDetailDTO> toDetailDTOList(List<ScoreHistory> shs);
+    List<ScoreDetailDTO> toDetailDTOList(Collection<ScoreHistory> shs);
 
     // SUMMARY
     ScoreHistorySummary toSummaryDTO(ScoreHistory sh);
 
-    List<ScoreHistorySummary> toSummaryDTOList(List<ScoreHistory> shs);
+    List<ScoreHistorySummary> toSummaryDTOList(Collection<ScoreHistory> shs);
 
     // FOR CREATION
     @Mappings({
@@ -41,6 +45,7 @@ public interface ScoreMapper {
     ScoreHistory toEntityFromCreate(ScoreCreateDTO create);
 
     // FOR UPDATING
+    @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
     @Mapping(target = "user", ignore = true)
-    ScoreHistory toEntityFromCreate(ScoreUpdateDTO update);
+    void updateEntity(ScoreUpdateDTO dto, @MappingTarget ScoreHistory entity);
 }
