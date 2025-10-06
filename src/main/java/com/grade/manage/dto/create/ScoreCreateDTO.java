@@ -1,5 +1,7 @@
 package com.grade.manage.dto.create;
 
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import lombok.Data;
@@ -11,10 +13,21 @@ import lombok.Data;
 @Data
 public class ScoreCreateDTO {
 
-    private LocalDateTime week_start;
-    private Integer previous_score;
-    private Integer new_score;
+    @NotNull
+    private LocalDateTime weekStart;
+
+    @NotNull
+    private Integer previousScore;
+
+    @NotNull
+    private Integer newScore;
+
+    @NotNull
     private BigDecimal delta;
+
     private String reason;
-    private Long usuario_id;
+
+    @NotNull
+    @Positive
+    private Long userId;
 }
