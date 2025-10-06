@@ -2,7 +2,7 @@
 
 **Autor:** Studios TKOH! ([studiostkoh@gmail.com](mailto:studiostkoh@gmail.com))
 
-[English Version HERE!](https://github.com/LavenderEdit/grading/edit/lavender/README.en.md)
+[English Version HERE!](https://github.com/LavenderEdit/grading/blob/lavender/README.en.md)
 
 ## Resumen ejecutivo
 
