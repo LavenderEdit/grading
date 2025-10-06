@@ -11,8 +11,8 @@ import lombok.Data;
 public class ScoreDTO {
     
     private Long id;
-    private LocalDateTime week_start;
-    private Integer previous_score;
-    private Integer new_score;
-    private Long user_id;
+    private LocalDateTime weekStart;
+    private Integer previousScore;
+    private Integer newScore;
+    private Long userId;
 }
