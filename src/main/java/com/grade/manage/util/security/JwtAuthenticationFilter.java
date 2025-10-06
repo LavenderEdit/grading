@@ -13,6 +13,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
+import org.springframework.util.AntPathMatcher;
 
 /**
  *
@@ -25,20 +26,37 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     private static final String AUTH_HEADER = "Authorization";
     private static final String TOKEN_PREFIX = "Bearer ";
 
+    // Rutas públicas (no aplicar el filtro)
+    private static final AntPathMatcher PATH_MATCHER = new AntPathMatcher();
+    private static final String[] PUBLIC_PATHS = {
+        "/api/auth/**",
+        "/actuator/**",
+        // SpringDoc / Swagger
+        "/v3/api-docs/**",
+        "/swagger-ui.html",
+        "/swagger-ui/**"
+    };
+
     private final JwtTokenProvider tokenProvider;
     private final UserService userService;
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
             throws ServletException, IOException {
+
         String token = resolveToken(request);
-        if (token != null && tokenProvider.validateToken(token)
+
+        if (token != null
+                && tokenProvider.validateToken(token)
                 && SecurityContextHolder.getContext().getAuthentication() == null) {
+
             String username = tokenProvider.getUsernameFromToken(token);
             UserDetails userDetails = userService.loadUserByUsername(username);
+
             UsernamePasswordAuthenticationToken authentication
                     = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
             authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
+
             SecurityContextHolder.getContext().setAuthentication(authentication);
         }
 
@@ -47,8 +65,13 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
     @Override
     protected boolean shouldNotFilter(HttpServletRequest request) {
-        String path = request.getServletPath();
-        return path.startsWith("/api/auth");
+        String path = request.getRequestURI();
+        for (String p : PUBLIC_PATHS) {
+            if (PATH_MATCHER.match(p, path)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     private String resolveToken(HttpServletRequest request) {
