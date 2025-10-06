@@ -1,6 +1,7 @@
 package com.grade.manage.dto.simple;
 
-import com.grade.manage.util.Enums;
+import com.grade.manage.util.Enums.GradeStatus;
+import com.grade.manage.util.Enums.Status;
 import java.time.LocalDateTime;
 import lombok.Data;
 
@@ -21,7 +22,7 @@ public class TempAssignDTO {
 
     // Assignment Showable
     private LocalDateTime date;
-    private Long user_id; //Validation on the service so that the user assigned to is not an Evaluator
-    private Enums.Status status;
-    private Enums.GradeStatus grade_status;
+    private Long userId; //Validation on the service so that the user assigned to is not an Evaluator
+    private Status status;
+    private GradeStatus gradeStatus;
 }
