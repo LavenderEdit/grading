@@ -3,6 +3,7 @@ package com.grade.manage.repository;
 import com.grade.manage.model.Assignment;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
@@ -19,4 +20,10 @@ public interface AssignmentRepository extends JpaRepository<Assignment, Long> {
 
     @EntityGraph(attributePaths = {"template", "user"})
     List<Assignment> findByDateBetween(LocalDateTime start, LocalDateTime end);
+
+    @EntityGraph(attributePaths = {"template", "user"})
+    List<Assignment> findAllWithDetails();
+
+    @EntityGraph(attributePaths = {"template", "user"})
+    Optional<Assignment> findDetailedById(Long id);
 }
