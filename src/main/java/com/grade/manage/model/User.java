@@ -15,6 +15,7 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Email;
 import java.io.Serializable;
+import java.time.Instant;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.Set;
@@ -48,10 +49,24 @@ public class User extends BaseEntity implements Serializable {
     @Email
     @Column(name = "email", length = 60, nullable = false)
     private String email;
+    
+    @Column(name = "password", nullable = false, length = 100)
+    private String password;
 
     @Builder.Default
     @Column(name = "current_score")
-    private Integer current_score = 0;
+    private Integer currentScore = 0;
+    
+    @Column(name = "password_changed_at")
+    private Instant passwordChangedAt;
+
+    @Builder.Default
+    @Column(name = "enabled", nullable = false)
+    private Boolean enabled = true;
+
+    @Builder.Default
+    @Column(name = "locked", nullable = false)
+    private Boolean locked = false;
 
     //Relations
     @Builder.Default
