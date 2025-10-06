@@ -14,6 +14,6 @@ public class SetDetailDTO {
     private Long id;
     private String name;
     private String description;
-    private List<TempAssignDTO> tempassigns;
-    private Integer countTempAssigns;
+    private List<TempAssignDTO> assignments;
+    private Integer assignmentCount;
 }
