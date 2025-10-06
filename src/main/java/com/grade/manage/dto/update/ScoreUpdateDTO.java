@@ -1,5 +1,6 @@
 package com.grade.manage.dto.update;
 
+import jakarta.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import lombok.Data;
@@ -11,10 +12,11 @@ import lombok.Data;
 @Data
 public class ScoreUpdateDTO {
 
+    @NotNull
     private Long id;
-    private LocalDateTime week_start;
-    private Integer previous_score;
-    private Integer new_score;
+    private LocalDateTime weekStart;
+    private Integer previousScore;
+    private Integer newScore;
     private BigDecimal delta;
     private String reason;
 }
