@@ -3,10 +3,18 @@
  * Created: Oct 2, 2025
  */
 
-insert into `users` (name, email)
-select 'Vidal', 'vidal_admin@gmail.com'
-where not exists (select 1 from users where name = 'Vidal');
+INSERT INTO users (name, email, password, current_score, enabled, locked, password_changed_at, created_by, created_at, modified_by, modified_at)
+SELECT 'Vidal', 'vidal_admin@gmail.com', '$2a$12$YUj5ZCyMuO3GWD3uptZpIunTb8As1Yqt2xR3UNu1E6Ur.gyOtfbIW', 0, 1, 0,
+       UTC_TIMESTAMP(), 'system', UTC_TIMESTAMP(), 'system', UTC_TIMESTAMP()
+WHERE NOT EXISTS (SELECT 1 FROM users WHERE email = 'vidal_admin@gmail.com');
 
-insert into `user_rol` (user_id, role_id)
-select 2, 2
-where not exists (select 1 from user_rol where user_id = 2);
+INSERT INTO user_rol (user_id, role_id)
+SELECT u.id, r.id
+FROM users u
+JOIN roles r ON r.name = 'Admin'
+WHERE u.email = 'vidal_admin@gmail.com'
+  AND NOT EXISTS (
+      SELECT 1
+      FROM user_rol ur
+      WHERE ur.user_id = u.id
+        AND ur.role_id = r.id);
