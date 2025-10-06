@@ -9,8 +9,8 @@ import java.time.LocalDateTime;
  */
 public record ScoreHistorySummary(
         Long id,
-        LocalDateTime week_start,
-        Integer previous_score,
+        LocalDateTime weekStart,
+        Integer previousScore,
         BigDecimal delta,
         String reason) {
 
