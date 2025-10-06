@@ -16,8 +16,10 @@ public class UserDetailDTO {
     private Long id;
     private String name;
     private String email;
-    private Integer current_score;
+    private Integer currentScore;
+    private Boolean enabled;
+    private Boolean locked;
     private List<TempAssignDTO> assignments;
     private List<ScoreDTO> scores;
-    private RoleSummary rol;
+    private List<RoleSummary> roles;
 }
