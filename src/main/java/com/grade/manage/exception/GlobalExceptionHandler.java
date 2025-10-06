@@ -43,8 +43,15 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler(RoleNotFoundException.class)
-    public ResponseEntity<?> handleRoleNotFound(javax.management.relation.RoleNotFoundException ex) {
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(
+    public ResponseEntity<?> handleRoleNotFound(RoleNotFoundException ex) {
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(
+                Map.of("error", ex.getMessage(), "timestamp", LocalDateTime.now())
+        );
+    }
+
+    @ExceptionHandler(IllegalStateException.class)
+    public ResponseEntity<?> handleIllegalState(IllegalStateException ex) {
+        return ResponseEntity.status(HttpStatus.CONFLICT).body(
                 Map.of("error", ex.getMessage(), "timestamp", LocalDateTime.now())
         );
     }
