@@ -24,8 +24,8 @@ public class TempAssignUpdateDTO {
 
     // Assignment Updatable
     private LocalDateTime date;
-    private Long user_id; //Validation on the service so that the user assigned to is not an Evaluator
+    private Long userId; //Validation on the service so that the user assigned to is not an Evaluator
     private Status status;
-    private GradeStatus grade_status;
-    private String evidence_url;
+    private GradeStatus gradeStatus;
+    private String evidenceUrl;
 }
