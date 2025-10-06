@@ -12,7 +12,7 @@ public record AssignmentSummary(
         Long id,
         LocalDateTime date,
         Status status,
-        GradeStatus grade_status,
-        String evidence_url) {
+        GradeStatus gradeStatus,
+        String evidenceUrl) {
 
 }
