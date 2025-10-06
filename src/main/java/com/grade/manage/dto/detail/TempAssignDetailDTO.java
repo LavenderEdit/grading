@@ -18,13 +18,14 @@ public class TempAssignDetailDTO {
 
     // Template Updatable
     private String name;
+    private Integer weekday; //It autocompletes with the LocalDateTime it takes from assignment
     private Integer weight; //ComboBox on Front
     private String description; //Optional
 
     // Assignment Updatable
     private LocalDateTime date;
-    private Long user_id; //Validation on the service so that the user assigned to is not an Evaluator
+    private Long userId; //Validation on the service so that the user assigned to is not an Evaluator
     private Status status;
-    private GradeStatus grade_status;
-    private String evidence_url;
+    private GradeStatus gradeStatus;
+    private String evidenceUrl;
 }
