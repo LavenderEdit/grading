@@ -8,6 +8,6 @@ public record UserSummary(
         Long id,
         String name,
         String email,
-        Integer current_score) {
+        Integer currentScore) {
 
 }
