@@ -52,10 +52,10 @@ public class Assignment extends BaseEntity implements Serializable {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "grade_status", length = 10)
-    private GradeStatus grade_status;
+    private GradeStatus gradeStatus;
 
     @Column(name = "evidence_url", length = 60)
-    private String evidence_url;
+    private String evidenceUrl;
 
     //Relations
     @ManyToOne
