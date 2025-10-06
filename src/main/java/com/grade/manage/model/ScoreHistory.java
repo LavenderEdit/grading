@@ -43,15 +43,15 @@ public class ScoreHistory extends BaseEntity implements Serializable {
 
     @NotNull
     @Column(name = "week_start", nullable = false)
-    private LocalDateTime week_start;
+    private LocalDateTime weekStart;
 
     @NotNull
     @Column(name = "previous_score", nullable = false)
-    private Integer previous_score;
+    private Integer previousScore;
 
     @NotNull
     @Column(name = "new_score", nullable = false)
-    private Integer new_score;
+    private Integer newScore;
 
     @NotNull
     @Column(name = "delta", precision = 6, scale = 2, nullable = false)
