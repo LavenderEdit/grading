@@ -21,9 +21,10 @@ public interface AssignmentRepository extends JpaRepository<Assignment, Long> {
     @EntityGraph(attributePaths = {"template", "user"})
     List<Assignment> findByDateBetween(LocalDateTime start, LocalDateTime end);
 
-    @EntityGraph(attributePaths = {"template", "user"})
-    List<Assignment> findAllWithDetails();
+    // Ajusta los attributePaths a los nombres REALES en tu entity Assignment
+    @EntityGraph(attributePaths = {"student", "activityTemplate", "grades"})
+    List<Assignment> findAllBy();
 
-    @EntityGraph(attributePaths = {"template", "user"})
-    Optional<Assignment> findDetailedById(Long id);
+    @EntityGraph(attributePaths = {"student", "activityTemplate", "grades"})
+    Optional<Assignment> findWithDetailsById(Long id); // válido porque tiene ById
 }
