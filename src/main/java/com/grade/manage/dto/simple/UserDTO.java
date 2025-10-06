@@ -14,6 +14,8 @@ public class UserDTO {
     private Long id;
     private String name;
     private String email;
-    private Integer current_score;
+    private Integer currentScore;
+    private Boolean enabled;
+    private Boolean locked;
     private List<RoleSummary> roles;
 }
