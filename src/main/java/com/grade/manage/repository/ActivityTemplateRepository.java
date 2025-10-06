@@ -17,9 +17,9 @@ public interface ActivityTemplateRepository extends JpaRepository<ActivityTempla
     List<ActivityTemplate> findByActiveTrue();
 
     List<ActivityTemplate> findByActiveTrueAndWeekday(Integer weekday);
-    
+
     @EntityGraph(attributePaths = {"relations", "relations.set", "assignments"})
-    List<ActivityTemplate> findAllWithRelations();
+    List<ActivityTemplate> findAllBy();
 
     @EntityGraph(attributePaths = {"relations", "relations.set", "assignments"})
     Optional<ActivityTemplate> findWithRelationsById(Long id);
