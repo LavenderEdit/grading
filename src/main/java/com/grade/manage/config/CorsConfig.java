@@ -14,7 +14,7 @@ public class CorsConfig {
     @Bean
     public CorsFilter corsFilter() {
         CorsConfiguration cfg = new CorsConfiguration();
-        cfg.addAllowedOrigin("http://localhost:8080");
+        cfg.addAllowedOrigin("https://grading-app.azurewebsites.net/");
         cfg.addAllowedMethod("*");
         cfg.addAllowedHeader("*");
         cfg.setAllowCredentials(true);
