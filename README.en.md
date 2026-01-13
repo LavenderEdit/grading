@@ -185,5 +185,5 @@ The embedded `@OpenAPIDefinition` and SpringDoc starter expose Swagger UI (`/swa
 ---
 
 <p align="center">
-  <sub>🛠️ Developed with 💙 by <strong>Studios TKOH</strong></sub><br>
+  <sub>🛠️ Built with 💙 by <strong>Studios TKOH</strong></sub><br>
 </p>
