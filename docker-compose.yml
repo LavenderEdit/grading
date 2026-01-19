@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  grading-api:
+    build: .
+    container_name: grading-api-container
+    ports:
+      - '8085:8085'
+    env_file:
+      - .env
+    restart: unless-stopped
+    networks:
+      - portfolio_default
+
+networks:
+  portfolio_default:
+    external: true
