@@ -1,6 +1,10 @@
-# Proyecto Grading
+<p align="center">
+  <a href="https://endearing-blini-6a6b91.netlify.app/" target="_blank">
+    <img src="https://drive.google.com/uc?export=view&id=1TuT30CiBkinh85WuTvjKGKN47hCyCS0Z" width="300" alt="Studios TKOH Logo">
+  </a>
+</p>
 
-**Autor:** Studios TKOH! ([studiostkoh@gmail.com](mailto:studiostkoh@gmail.com))
+# Proyecto Grading
 
 [English Version HERE!](https://github.com/LavenderEdit/grading/blob/lavender/README.en.md)
 
@@ -178,6 +182,8 @@ Un `@SpringBootTest` verifica que el contexto de Spring cargue correctamente. [F
 
 `@OpenAPIDefinition` y el starter de SpringDoc exponen Swagger UI (`/swagger-ui.html`) y los specs OpenAPI (`/v3/api-docs`) en ejecución. [F: pom.xml L79–L84](https://github.com/LavenderEdit/grading/blob/lavender/pom.xml#L79-L84) · [F: GradingApplication.java L14–L24](https://github.com/LavenderEdit/grading/blob/lavender/src/main/java/com/grade/manage/GradingApplication.java#L14-L24)
 
-## Autor
+---
 
-Creado por **Studios TKOH!**. Para consultas o soporte, escribe a [studiostkoh@gmail.com](mailto:studiostkoh@gmail.com).
+<p align="center">
+  <sub>🛠️ Desarrollado con 💙 por <strong>Studios TKOH</strong></sub><br>
+</p>
